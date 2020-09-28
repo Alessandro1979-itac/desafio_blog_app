@@ -1,17 +1,17 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const {userAuthenticated} = require('../helpers/userAuthenticated');
 const profileControl = require('../controller/profile');
 const postControl = require('../controller/post');
 const CategoryControl = require('../controller/category');
 
-router.get('/', userAuthenticated, (req, res) => {
+router.get('/', userAuthenticated, (_, res) => {
     res.render('../views/layouts/profile/index');
 });
 
 // Editar Perfil
 router.get('/edit/:id', userAuthenticated, profileControl.fillUserForm);
 router.post('/edit', userAuthenticated, profileControl.updateUser);
-router.get('/edit-senha', userAuthenticated, (req, res) => {
+router.get('/edit-senha', userAuthenticated, (_, res) => {
     res.render('../views/layouts/profile/update-password');
 });
 router.post('/edit-senha', userAuthenticated, profileControl.updatePassword);
