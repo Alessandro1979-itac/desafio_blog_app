@@ -1,0 +1,37 @@
+ <div class="row">
+    <div class="col-md-8">
+        <div class="jumbotron">
+            <h1 class="display-4 ">Blog de Tecnologia</h1>
+            <p class="lead">Este é um Blog simples, desenvolvido com Node.js + Espress + MongoDB</p>
+            <hr>
+            <p>Aqui você vai poder ler sobre as novidades do mundo da computação!</p>
+        </div>
+            
+        {{#each posts}}
+            <div class="card mb-5">
+                <div class="card-header">
+                    <h3 class="card-title">{{title}}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <p>{{description}}</p>
+                        <a href="/postagem/{{slug}}">
+                            <button class="btn btn-success">
+                                Leia mais
+                            </button>
+                        </a>
+                        <br><br>
+                        <small>Data: {{#formatDate date}}{{/formatDate}}</small><br>
+                        <small>Categoria: {{category.name}}</small>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <hr class="mb-5"/>
+            <h2 class="text-center">Não existem postagens no momento!</h2>
+        {{/each}}
+    </div>        
+    <div class="col-md-4">
+        {{>_side}}
+    </div>
+</div>
