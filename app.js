@@ -36,7 +36,7 @@ const moment = require('moment');
 // Configurações
 // Sessão
 app.use(session({
-    secret: "cursodenode",
+    secret: 'cursodenode',
     resave: true,
     saveUninitialized: true
 }));
@@ -74,7 +74,7 @@ mongoose.connect(db.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).catch((erro) => {
-    console.log("Houve um erro no MongoDB: " + erro);
+    console.log('Houve um erro no MongoDB: ' + erro);
 });
 
 //Public
