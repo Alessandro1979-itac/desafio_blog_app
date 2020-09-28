@@ -19,12 +19,12 @@ exports.showPost = function (req, res) {
             }
             res.render('../views/layouts/post/show-post', post);
         } else {
-            req.flash("error_msg", "Essa postagem nao existe");
-            res.redirect("/");
+            req.flash('error_msg', 'Essa postagem nao existe');
+            res.redirect('/');
         }
     }).catch((error) => {
-        req.flash("error_msg", "Houve um erro interno");
-        res.redirect("/");
+        req.flash('error_msg', 'Houve um erro interno');
+        res.redirect('/');
     });
 }
 
@@ -62,19 +62,19 @@ function fieldsValidatorPost (fields) {
     if (!fields.title || typeof fields.title === undefined || fields.title === null) {
         formErrors.fieldTitleError = 'Título inválido';
     } else if (fields.title.length < 2) {
-        formErrors.fieldTitleError = "Título é muito pequeno";
+        formErrors.fieldTitleError = 'Título é muito pequeno';
     }
         
     if (!fields.description || typeof fields.description === undefined || fields.description === null) {
         formErrors.fieldDescriptionError =  'Descrição inválida';
     } else if (fields.description.length < 2) {
-        formErrors.fieldDescriptionError =  "Descrição é muito pequena";
+        formErrors.fieldDescriptionError =  'Descrição é muito pequena';
     }
         
     if (!fields.content || typeof fields.content === undefined || fields.content === null) {
         formErrors.fieldContentError = 'Conteúdo inválido';
     } else if (fields.content.length < 2) {
-        formErrors.fieldContentError = "Conteúdo é muito pequeno";
+        formErrors.fieldContentError = 'Conteúdo é muito pequeno';
     }
         
     if (!fields.category || typeof fields.category === undefined || fields.category === null) {
@@ -217,12 +217,12 @@ exports.showPostUnderReview = function (req, res) {
             }
             res.render('../views/layouts/admin/post/post-review', post);
         } else {
-            req.flash("error_msg", "Essa postagem nao existe");
+            req.flash('error_msg', 'Essa postagem nao existe');
             res.redirect("/");
         }
     }).catch((error) => {
-        req.flash("error_msg", "Houve um erro interno" + error);
-        res.redirect("/");
+        req.flash('error_msg', 'Houve um erro interno' + error);
+        res.redirect('/');
     });
 }
 
@@ -247,7 +247,7 @@ exports.deletePost_Admin = function (req, res) {
     Post.deleteOne({_id: req.body.id}).then(() => {
         req.flash('success_msg', 'Postagem excluida com sucesso!');
         res.redirect('/admin/postagens');
-    }).catch((error) => {
+    }).catch((erro) => {
         req.flash('error_msg', 'Erro ao deletar postagem! ' + erro);
         res.redirect('/admin/postagens');
     });
