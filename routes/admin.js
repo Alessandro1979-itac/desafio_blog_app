@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const {adminAuthenticated} = require('../helpers/adminAuthenticated');
+const { adminAuthenticated } = require('../helpers/adminAuthenticated');
 const categoryControl = require('../controller/category');
 const postControl = require('../controller/post');
 const userControl = require('../controller/user');
 
-router.get('/', adminAuthenticated, (req, res) => {
+router.get('/', adminAuthenticated, (_, res) => {
     res.render('../views/layouts/admin/index');
 });
 
@@ -16,7 +16,7 @@ router.post('/postagens/deletar/', adminAuthenticated, postControl.deletePost_Ad
 
 // Gerenciamento de Categorias
 router.get('/categorias', adminAuthenticated, categoryControl.listCategories);
-router.get('/categorias/add', adminAuthenticated, (req, res) => {
+router.get('/categorias/add', adminAuthenticated, (_, res) => {
     res.render('../views/layouts/admin/Category/create-category');
 });
 router.post('/categorias/nova', adminAuthenticated, categoryControl.createCategory);
