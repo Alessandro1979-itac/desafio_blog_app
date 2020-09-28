@@ -1,7 +1,7 @@
-require("../models/User");
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const User = mongoose.model("users");
+require('../models/User');
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const User = mongoose.model('users');
 const arrayToObject = require('../helpers/arrayToObject');
 
 exports.fillUserForm = function (req, res) {
@@ -19,25 +19,25 @@ function fieldsValidatorProfile (fields) {
     if (!fields.name || typeof fields.name === undefined || fields.name === null) {
         formErrors.fieldNameError = 'Nome inválido';
     } else if (fields.name.length < 3)                                                                                                                                                                                                                                                                                        {
-        formErrors.fieldNameError = "Seu nome deve ter no mínimo 3 caracteres";
+        formErrors.fieldNameError = 'Seu nome deve ter no mínimo 3 caracteres';
     } 
 
     if (!fields.surname || typeof fields.surname === undefined || fields.surname === null) {
-        formErrors.fieldSurnameError = "Sobrenome inválido";
+        formErrors.fieldSurnameError = 'Sobrenome inválido';
     } else if (fields.surname.length < 2) {
-        formErrors.fieldSurnameError = "Seu sobrenome deve ter no mínimo 2 caracteres";
+        formErrors.fieldSurnameError = 'Seu sobrenome deve ter no mínimo 2 caracteres';
     } 
 
     if (!fields.user_name || typeof fields.user_name === undefined || fields.user_name === null) {
-        formErrors.fieldUsernameError =  "Nome de usuário inválido";
+        formErrors.fieldUsernameError =  'Nome de usuário inválido';
     } else if (fields.user_name.length < 5) {
-        formErrors.fieldUsernameError = "Seu nome de usuário deve ter no mínimo 5 caracteres";
+        formErrors.fieldUsernameError = 'Seu nome de usuário deve ter no mínimo 5 caracteres';
     } 
 
     if (!fields.email || typeof fields.email === undefined || fields.email === null){
-        formErrors.fieldEmailError = "E-mail inválido";
+        formErrors.fieldEmailError = 'E-mail inválido';
     } else if (fields.email.length < 5) {
-        formErrors.fieldEmailError = "Seu e-mail deve ter no mínimo 5 caracteres";
+        formErrors.fieldEmailError = 'Seu e-mail deve ter no mínimo 5 caracteres';
     }
 
     return arrayToObject(formErrors);
@@ -47,15 +47,15 @@ function fieldsValidatorPassword (fields) {
     let formErrors = new Array();
 
     if (!fields.new_password || typeof fields.new_password === undefined || fields.new_password === null) {
-        formErrors.fieldNewPasswordError = "Senha inválida";
+        formErrors.fieldNewPasswordError = 'Senha inválida';
     } else if (fields.new_password.length < 5) {
-        formErrors.fieldNewPasswordError ="Sua senha deverá ter no mínimo 5 caracteres";
+        formErrors.fieldNewPasswordError = 'Sua senha deverá ter no mínimo 5 caracteres';
     } 
     
     if (!fields.password_confirmation || typeof fields.password_confirmation === undefined || fields.password_confirmation === null) {
-        formErrors.fieldPasswordConfirmationError = "Confirme sua senha";
+        formErrors.fieldPasswordConfirmationError = 'Confirme sua senha';
     } else if (fields.new_password !== fields.password_confirmation) {
-        formErrors.fieldPasswordConfirmationError = "As senhas estão diferentes";
+        formErrors.fieldPasswordConfirmationError = 'As senhas estão diferentes';
     }
 
     return arrayToObject(formErrors);
