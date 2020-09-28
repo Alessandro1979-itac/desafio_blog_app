@@ -1,6 +1,6 @@
-require("../models/User");
-const mongoose = require("mongoose");
-const User = mongoose.model("users");
+require('../models/User');
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
 
 exports.fillUserTable = function (req, res) {
     User.find().sort({name:'desc'}).lean().then((users) => {
